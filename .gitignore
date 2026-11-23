@@ -1,5 +1,6 @@
 # ---- VERİ: asla git'e girmez ----
 data/raw/*
+!data/raw/*.csv
 data/interim/*
 data/processed/*
 !data/**/.gitkeep
