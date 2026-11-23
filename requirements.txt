@@ -1,0 +1,11 @@
+# Kurulum sırası önemli: önce torch (CUDA'lı), sonra bunlar.
+# torch'u BU DOSYADAN kurma — README'deki komutu kullan.
+
+mediapipe>=0.10.14
+opencv-python>=4.10.0
+numpy>=1.26,<2.0
+pandas>=2.2.0
+scikit-learn>=1.5.0
+pyyaml>=6.0
+tqdm>=4.66.0
+matplotlib>=3.8.0

@@ -1,0 +1,61 @@
+# ============================================================
+#  Proje ayarları — bütün sayılar burada, kodun içinde değil.
+#  Bir parametreyi değiştireceksen SADECE bu dosyayı düzenle.
+#  Kaynak: TÜBİTAK 2209-A araştırma önerisi, Bölüm 2 (Yöntem)
+# ============================================================
+
+veri:
+  autsl_kok: "data/raw/autsl"      # AUTSL'i buraya çıkaracaksın
+  sinif_dosyasi: "ClassId.csv"
+  egitim_etiket: "train_labels.csv"
+  dogrulama_etiket: "validation_labels.csv"
+  secilen_sinif_sayisi: 60
+
+oznitelik:
+  poz_nokta: 25        # MediaPipe Pose'dan alınan üst gövde noktaları
+  el_nokta: 21         # her el için
+  toplam_nokta: 67     # 25 + 21 + 21
+  boyut: 201           # 67 nokta x 3 koordinat (x, y, z)
+  sol_bilek_index: 15  # Pose modelinde sol bilek
+  sag_bilek_index: 16  # Pose modelinde sağ bilek
+
+on_isleme:
+  kare_sayisi: 48              # her dizi bu uzunluğa sabitlenir
+  normalizasyon: "omuz"        # omuz orta noktası = orijin, omuz genişliği = 1 birim
+  bos_kare_kirp: true          # baş/sondaki tespit edilemeyen kareler atılır
+  tespit_edilemeyen_doldur: 0.0
+
+artirma:
+  aynalama_orani: 0.5          # eğitim örneklerinin %50'si aynalanır (H3)
+  dondurme_derece: 10          # ±10°
+  olcekleme: [0.9, 1.1]
+  oteleme: true
+  gauss_gurultu: true
+  zamanda_rastgele_kirpma: true
+
+bolme:
+  yontem: "GroupShuffleSplit"  # grup = işaretçi
+  grup_sutunu: "isaretci"
+  test_orani: 0.20
+  dogrulama_orani: 0.10
+  tohum: 42                    # tekrarlanabilirlik için sabit
+
+model:
+  temel: "bigru"               # karşılaştırma temeli
+  ana: "transformer"           # ana model
+  gizli_boyut: 128
+
+egitim:
+  optimizasyon: "adamw"
+  ogrenme_orani: 0.001
+  yigin_boyutu: 32
+  etiket_yumusatma: 0.1
+  gradyan_kirpma: 1.0
+  erken_durdurma_sabir: 10
+  azami_donem: 100
+
+cikarim:
+  guven_esigi: 0.6             # altında kalan tahminler reddedilir
+
+kalite:
+  asgari_tespit_orani: 0.90    # İP1 başarı ölçütü
