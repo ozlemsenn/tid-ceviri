@@ -6,7 +6,6 @@
 
 - **Proje yürütücüsü:** Özlem Şen
 - **Danışman:** Dr. Öğr. Üyesi Muhammed Milani
-- **Program:** TÜBİTAK 2209-A — Başvuru no. 1919B012615317
 - **Süre:** 8 ay (İP1–İP5)
 
 ---
